@@ -1,5 +1,4 @@
 import AboutUs from "./components/main/about-us";
-import Blog from "./components/main/blog";
 import ContactUs from "./components/main/contact-us";
 import Features from "./components/main/services";
 import Header from "./components/main/header";
@@ -17,7 +16,6 @@ export default function Home() {
       <Services />
       <Features />
       <Pricing />
-      {/* <Blog /> */}
       <NewProject />
       <ContactUs />
     </>

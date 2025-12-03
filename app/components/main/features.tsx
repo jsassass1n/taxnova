@@ -1,7 +1,14 @@
+"use client";
+import { useFadeOnScroll } from "@/app/hooks/hook";
+
 export default function Features() {
+  const { ref, isVisible } = useFadeOnScroll();
   return (
     <section className="bg-white dark:bg-gray-900" id="features">
-      <div className="mx-auto max-w-7xl px-4 py-8 text-center sm:py-16 lg:px-6">
+      <div
+        ref={ref}
+        className={`${isVisible ? "visible" : ""} fade-section mx-auto max-w-7xl px-4 py-8 text-center sm:py-16 lg:px-6`}
+      >
         <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
           Niyə Finexa?
         </h2>

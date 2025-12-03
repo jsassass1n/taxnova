@@ -1,7 +1,15 @@
+"use client";
+
+import { useFadeOnScroll } from "@/app/hooks/hook";
+
 export default function Services() {
+  const { ref, isVisible } = useFadeOnScroll();
   return (
     <section className="bg-white dark:bg-gray-900" id="services">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-16 lg:px-6">
+      <div
+        ref={ref}
+        className={`${isVisible ? "visible" : ""} fade-section mx-auto max-w-7xl px-4 py-8 sm:py-16 lg:px-6`}
+      >
         <div className="mb-8 max-w-3xl lg:mb-16">
           <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
             Təhlükəsiz platforma, dəqiq maliyyə

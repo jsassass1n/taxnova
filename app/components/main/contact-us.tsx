@@ -1,7 +1,50 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { useFadeOnScroll } from "@/app/hooks/hook";
+import { Spinner } from "flowbite-react";
+import { useState } from "react";
+
 export default function ContactUs() {
+  const { ref, isVisible } = useFadeOnScroll();
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setLoading(true);
+    const form = new FormData(e.target);
+
+    const res = await fetch("/api/client", {
+      method: "POST",
+      body: JSON.stringify({
+        firstName: form.get("firstName"),
+        lastName: form.get("lastName"),
+        email: form.get("email"),
+        phone: form.get("phone"),
+        message: form.get("message"),
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    await res.json();
+
+    if (res.ok) {
+      setSuccess(true); // показать сообщение
+      e.target.reset(); // очистить форму
+
+      setTimeout(() => setSuccess(false), 3000); // убрать через 3 сек
+    }
+    setLoading(false);
+    e.target.reset();
+  }
+
   return (
     <section className="bg-white dark:bg-gray-900" id="contact-us">
-      <div className="bg-gray-700 bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/contact/laptop-human.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
+      <div
+        ref={ref}
+        className={`${isVisible ? "visible" : ""} fade-section bg-gray-700 bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/contact/laptop-human.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply`}
+      >
         <div className="mx-auto max-w-screen-sm px-4 pt-8 pb-72 text-center lg:px-6 lg:pt-24 lg:pb-80">
           <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white">
             Bizimlə əlaqə saxlayın
@@ -14,9 +57,12 @@ export default function ContactUs() {
           </p>
         </div>
       </div>
-      <div className="mx-auto -mt-96 max-w-screen-xl px-4 py-16 sm:py-24 lg:px-6">
+      <div
+        ref={ref}
+        className={`${isVisible ? "visible" : ""} fade-section mx-auto -mt-96 max-w-screen-xl px-4 py-16 sm:py-24 lg:px-6`}
+      >
         <form
-          action="#"
+          onSubmit={handleSubmit}
           className="mx-auto mb-16 grid max-w-screen-md grid-cols-1 gap-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm sm:grid-cols-2 lg:mb-28 dark:border-gray-700 dark:bg-gray-800"
         >
           <div>
@@ -29,6 +75,7 @@ export default function ContactUs() {
             <input
               type="text"
               id="first-name"
+              name="firstName"
               className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
               placeholder="Ad"
               required
@@ -44,6 +91,7 @@ export default function ContactUs() {
             <input
               type="text"
               id="last-name"
+              name="lastName"
               className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
               placeholder="Soyad"
               required
@@ -59,6 +107,7 @@ export default function ContactUs() {
             <input
               type="email"
               id="email"
+              name="email"
               className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
               placeholder="name@taxnova.com"
               required
@@ -73,6 +122,7 @@ export default function ContactUs() {
             </label>
             <input
               type="number"
+              name="phone"
               id="phone-number"
               className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
               placeholder="+994-55-555-55-55"
@@ -88,6 +138,7 @@ export default function ContactUs() {
             </label>
             <textarea
               id="message"
+              name="message"
               rows={6}
               className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
               placeholder="Suallarınız..."
@@ -99,12 +150,20 @@ export default function ContactUs() {
               daha ətraflı məlumat bu sənədlərdə göstərilmişdir.
             </p>
           </div>
-          <button
-            type="submit"
-            className="bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 rounded-lg px-5 py-3 text-center text-sm font-medium text-white focus:ring-4 focus:outline-none sm:w-fit"
-          >
-            Göndər
-          </button>
+          <div>
+            <button
+              type="submit"
+              className="bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 rounded-lg px-5 py-3 text-center text-sm font-medium text-white focus:ring-4 focus:outline-none sm:w-fit"
+            >
+              {loading && <Spinner />}
+              {!loading && "Göndər"}
+            </button>
+            {success && (
+              <p className="mt-7 flex h-10 w-[200px] items-center justify-center rounded bg-green-600 font-bold text-white">
+                Göndərildi!
+              </p>
+            )}
+          </div>
         </form>
         <div className="space-y-8 text-center md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
           <div>
