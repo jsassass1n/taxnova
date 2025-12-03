@@ -15,7 +15,7 @@ export default function Pricing() {
             Biznesiniz üçün uyğun mühasibatlıq paketi
           </h2>
           <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Finexa olaraq fərqli ölçülü şirkətlər üçün şəffaf, əlçatan və sabit
+            TaxNova olaraq fərqli ölçülü şirkətlər üçün şəffaf, əlçatan və sabit
             qiymət paketləri təklif edirik. Texnologiya və peşəkar ekspertiza
             ilə maliyyə proseslərinizi sadələşdiririk.
           </p>

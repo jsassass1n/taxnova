@@ -19,7 +19,7 @@ export default function AboutUs() {
             tərəfdaşınız
           </h2>
           <p className="mb-4">
-            Finexa Accounting Solutions olaraq 2000+ fərqli biznesin maliyyə
+            TaxNova Accounting Solutions olaraq 2000+ fərqli biznesin maliyyə
             proseslərini gücləndirən peşəkar mühasibatlıq, vergi və hesabat
             xidmətləri təqdim edirik. Biz sahibkarları, maliyyə komandalarını və
             startapları daha sürətli qərar verməyə, riskləri azaltmağa və sabit

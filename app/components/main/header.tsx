@@ -1,5 +1,5 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
+
 export default function Header() {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({
@@ -13,13 +13,8 @@ export default function Header() {
       <nav className="border-gray-200 bg-white px-4 py-2.5 lg:px-6 dark:bg-gray-800">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between">
           <a href="https://flowbite.com" className="flex items-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
-            />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
+              TaxNova
             </span>
           </a>
           <div

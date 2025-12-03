@@ -10,10 +10,10 @@ export default function Features() {
         className={`${isVisible ? "visible" : ""} fade-section mx-auto max-w-7xl px-4 py-8 text-center sm:py-16 lg:px-6`}
       >
         <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          Niyə Finexa?
+          Niyə TaxNova?
         </h2>
         <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-          Aşağıda Finexa-nı seçməyiniz üçün əsas səbəblərdən bəziləri ilə tanış
+          Aşağıda TaxNova-nı seçməyiniz üçün əsas səbəblərdən bəziləri ilə tanış
           ola bilərsiniz.
         </p>
         <div className="mt-8 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:mt-12 lg:grid-cols-3">
@@ -67,7 +67,7 @@ export default function Features() {
               Vergi və hesabat zəmanəti
             </h3>
             <p className="mb-4 text-gray-500 dark:text-gray-400">
-              Finexa mütəxəssisləri bütün vergi bəyannamələrinin düzgün
+              TaxNova mütəxəssisləri bütün vergi bəyannamələrinin düzgün
               hazırlanmasına və vaxtında təqdim edilməsinə zəmanət verir.
               Səhvlər, cərimələr və gözlənilməz risklər minimuma endirilir.
             </p>

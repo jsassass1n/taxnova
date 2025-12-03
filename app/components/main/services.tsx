@@ -15,9 +15,9 @@ export default function Services() {
             Təhlükəsiz platforma, dəqiq maliyyə
           </h2>
           <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Finexa-da biz müasir texnologiya, innovasiya və peşəkar mühasibatlıq
-            həlləri ilə bizneslərin uzunmüddətli maliyyə dəyərini artırırıq və
-            riskləri minimuma endiririk.
+            TaxNova-da biz müasir texnologiya, innovasiya və peşəkar
+            mühasibatlıq həlləri ilə bizneslərin uzunmüddətli maliyyə dəyərini
+            artırırıq və riskləri minimuma endiririk.
           </p>
         </div>
         <div className="space-y-8 md:grid md:grid-cols-2 md:gap-8 md:space-y-0 lg:grid-cols-3 xl:gap-12">
